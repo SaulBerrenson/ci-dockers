@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+    
+    db:
+        image: postgres
+        restart: always
+        environment:
+          POSTGRES_PASSWORD: SYXDOMS1ILVERl
+        ports: 
+            - 5432:5432
+        volumes: 
+            - {YOUR_PATH}:/var/lib/postgresql/data
+             #link for gitea postgresql host.docker.internal:5432
+    gitea:
+        image: "gitea/gitea:latest"
+        volumes:
+            - {YOUR_PATH}:/data
+        ports:
+            - "30001:20"
+            - "30000:3000"
+        depends_on:
+            - "db"
+        #root
