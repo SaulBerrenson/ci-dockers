@@ -5,6 +5,8 @@ services:
     db:
         image: postgres
         restart: always
+        hostname: postgres
+        container_name: db
         environment:
           POSTGRES_PASSWORD: SYXDOMS1ILVERl
         ports: 
@@ -14,6 +16,8 @@ services:
              #link for gitea postgresql host.docker.internal:5432
     gitea:
         image: "gitea/gitea:latest"
+        hostname: repository
+        container_name: repository
         volumes:
             - {YOUR_PATH}:/data
         ports:
